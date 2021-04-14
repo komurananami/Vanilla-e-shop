@@ -19,7 +19,8 @@ const store = {
         description: "kit kat",
         stock: 20,
         images: [
-          "https://www.amazon.co.jp/images/I/81pADSmSZ5L._AC_SL1500_.jpg",
+          "https://media.istockphoto.com/photos/male-hands-breaking-open-baked-bread-in-half-picture-id1126687472?s=612x612",
+          "https://image.shutterstock.com/image-photo/freshly-baked-delicious-bread-on-600w-420604306.jpg",
         ],
       },
       {

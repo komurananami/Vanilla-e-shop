@@ -1,9 +1,47 @@
+.header {
+  position: fixed;
+  padding: 30px 100px;
+  /* background-color: #666666; */
+}
+
+.topWrapper {
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.topImg {
+  width: 100%;
+}
+
+.topMessage {
+  position: absolute;
+}
+
+.introHeading {
+  padding: 80px;
+  /* align-items: center; */
+  /* align-content: center; */
+}
+
+.introHeadingTop {
+  font-size: x-large;
+}
+
+.introHeadingMessage {
+  color: #666666;
+}
+
 .products-container {
   display: flex;
 }
 
 .product-item {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   padding: 10px;
+}
+.product-item img {
+  width: 700px;
+  height: 200px;
 }
