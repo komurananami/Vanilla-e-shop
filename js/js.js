@@ -17,6 +17,7 @@ const App = {
         const imgs = document.createElement("div");
         const name = document.createElement("div");
         const price = document.createElement("div");
+        const description = document.createElement("div");
         const btn = document.createElement("button");
 
         const options = {
@@ -27,15 +28,21 @@ const App = {
 
         document.body.style.margin = "0px";
 
+        name.className = "name";
+        price.className = "price";
+        description.className = "description";
+
         name.innerHTML = product.name;
         price.innerHTML = `USD ${product.price}`;
         // store.images.style.width = "100px";
+        description.innerHTML = product.description;
 
         btn.innerHTML = "Buy";
 
         el.appendChild(imgs);
         el.appendChild(name);
         el.appendChild(price);
+        el.appendChild(description);
         el.appendChild(btn);
 
         el.classList.add("product-item");
@@ -66,6 +73,8 @@ const App = {
       els.introHeadingTop.innerHTML = "We design delicious";
       els.introHeadingMessage.innerHTML =
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam </br>nonummy tincidunt ut laoreet dolore magna aliquam erat volutpat.";
+      els.footerImg.src =
+        "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
 
       els.app.appendChild(els.header);
       els.header.appendChild(els.Logo);
@@ -79,11 +88,12 @@ const App = {
       els.introHeading.appendChild(els.introHeadingTop);
       els.introHeading.appendChild(els.introHeadingMessage);
 
-      els.app.appendChild(els.footer);
       els.main.appendChild(els.productsContainer);
       // els.app.appendChild(els.footer);
       // els.productsContainer.style.background = "black";
       els.productsContainer.classList.add("products-container");
+      els.app.appendChild(els.footer);
+      els.footer.appendChild(els.footerImg);
 
       // console.log(els.productsContainer);
     },
@@ -102,6 +112,7 @@ const App = {
     introHeadingTop: document.createElement("div"),
     introHeadingMessage: document.createElement("div"),
     footer: document.createElement("div"),
+    footerImg: document.createElement("img"),
 
     productsContainer: document.createElement("div"),
   },
