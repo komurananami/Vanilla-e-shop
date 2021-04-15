@@ -3,7 +3,7 @@ const store = {
     list: [
       {
         id: 1,
-        name: "croissant",
+        name: "Croissant",
         price: 2,
         description:
           "Lorem ipsum dolor sit amet, <br/>consectetuer adipiscing elit",
@@ -27,7 +27,7 @@ const store = {
       },
       {
         id: 3,
-        name: "rye bread",
+        name: "Rye Bread",
         price: 3,
         description:
           "Lorem ipsum dolor sit amet, <br/>consectetuer adipiscing elit",
