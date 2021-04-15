@@ -1,0 +1,36 @@
+.__carrossel-container {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  /* overflow: auto; */
+  /* overflow: hidden; */
+}
+
+.__carrossel-img {
+  max-width: 100%;
+  border-radius: 100px;
+}
+
+.__carrossel-move-left {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 150px;
+  text-align: center;
+  /* background: grey; */
+}
+
+.__carrossel-move-left:hover {
+  background: grey;
+}
+
+.__carrossel-move-right {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 150px;
+  /* background: grey; */
+  text-align: center;
+}
+
+.__carrossel-move-right:hover {
+  background: grey;
+}
