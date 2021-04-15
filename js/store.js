@@ -3,34 +3,38 @@ const store = {
     list: [
       {
         id: 1,
-        name: "chocolate",
+        name: "croissant",
         price: 2,
-        description: "the best cholocate in town",
+        description:
+          "Lorem ipsum dolor sit amet, <br/>consectetuer adipiscing elit",
         stock: 20,
         images: [
-          "https://upload.wikimedia.org/wikipedia/commons/7/70/Chocolate_%28blue_background%29.jpg",
-          "https://cdn.shopify.com/s/files/1/0165/0891/1670/products/zaku_01_1200x.jpg?v=1614763585",
+          "https://media.istockphoto.com/photos/breakfast-with-croissants-coffee-orange-juice-and-berries-picture-id1001971972?s=612x612",
+          "https://media.istockphoto.com/photos/french-boulangerie-fresh-croissant-for-sale-picture-id629455902?s=612x612",
         ],
       },
       {
         id: 2,
-        name: "kitkat",
+        name: "Rice Flour Bread",
         price: 5,
-        description: "kit kat",
+        description:
+          "Lorem ipsum dolor sit amet, <br/>consectetuer adipiscing elit",
         stock: 20,
         images: [
+          "https://media.istockphoto.com/photos/fresh-italian-bread-on-a-cutting-board-picture-id158827188?s=612x612",
           "https://media.istockphoto.com/photos/male-hands-breaking-open-baked-bread-in-half-picture-id1126687472?s=612x612",
-          "https://image.shutterstock.com/image-photo/freshly-baked-delicious-bread-on-600w-420604306.jpg",
         ],
       },
       {
         id: 3,
-        name: "meiji",
+        name: "rye bread",
         price: 3,
-        description: "meiji",
+        description:
+          "Lorem ipsum dolor sit amet, <br/>consectetuer adipiscing elit",
         stock: 20,
         images: [
-          "https://www.amazon.co.jp/images/I/6135I4rEcJL._AC_SL1200_.jpg",
+          "https://media.istockphoto.com/photos/loaf-of-rustic-homemade-bread-picture-id895450778?s=612x612",
+          "https://media.istockphoto.com/photos/fresh-loaf-of-bread-on-a-cutting-board-and-salt-picture-id1144562350?s=612x612",
         ],
       },
     ],
