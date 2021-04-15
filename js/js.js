@@ -34,7 +34,6 @@ const App = {
 
         name.innerHTML = product.name;
         price.innerHTML = `USD ${product.price}`;
-        // store.images.style.width = "100px";
         description.innerHTML = product.description;
 
         btn.innerHTML = "Buy";
@@ -55,7 +54,6 @@ const App = {
       els.main.className = "main";
       els.topWrapper.className = "topWrapper";
       els.topImg.className = "topImg";
-      els.topMessage.className = "topMessage";
       els.introWrapper.className = "introWrapper";
       els.introHeading.className = "introHeading";
       els.introHeadingTop.className = "introHeadingTop";
@@ -64,12 +62,8 @@ const App = {
 
       els.Logo.src =
         "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
-
-      // els.topImg.style.width = "100%";
       els.topImg.src =
         "https://image.shutterstock.com/image-photo/still-life-bread-flour-spikelets-600w-1278808660.jpg";
-      els.topMessage.src =
-        "https://fontmeme.com/permalink/210414/d61f372a7775edcf55c395a7033954a0.png";
       els.introHeadingTop.innerHTML = "We design delicious";
       els.introHeadingMessage.innerHTML =
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam </br>nonummy tincidunt ut laoreet dolore magna aliquam erat volutpat.";
@@ -82,15 +76,13 @@ const App = {
       els.app.appendChild(els.main);
       els.main.appendChild(els.topWrapper);
       els.topWrapper.appendChild(els.topImg);
-      els.topWrapper.appendChild(els.topMessage);
+      // els.topWrapper.appendChild(els.topMessage);
       els.main.appendChild(els.introWrapper);
       els.introWrapper.appendChild(els.introHeading);
       els.introHeading.appendChild(els.introHeadingTop);
       els.introHeading.appendChild(els.introHeadingMessage);
 
       els.main.appendChild(els.productsContainer);
-      // els.app.appendChild(els.footer);
-      // els.productsContainer.style.background = "black";
       els.productsContainer.classList.add("products-container");
       els.app.appendChild(els.footer);
       els.footer.appendChild(els.footerImg);
@@ -106,7 +98,6 @@ const App = {
     main: document.createElement("div"),
     topWrapper: document.createElement("div"),
     topImg: document.createElement("img"),
-    topMessage: document.createElement("img"),
     introWrapper: document.createElement("div"),
     introHeading: document.createElement("div"),
     introHeadingTop: document.createElement("div"),
