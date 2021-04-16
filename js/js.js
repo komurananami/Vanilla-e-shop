@@ -3,6 +3,10 @@ const App = {
     this.contollers.renderProducts();
     this.contollers.renderHome();
     this.contollers.renderFooter();
+
+    const searchParams = new URLSearchParams(location.search);
+    const page = searchParams.get("page"); //オブジェクトからkeyがpageのvalueをとってくる
+    this.router.go(page);
   },
 
   store,
@@ -10,6 +14,20 @@ const App = {
   router: {
     go(newPage) {
       console.log("go", newPage);
+
+      const serchParams = new URLSearchParams(location.search);
+
+      serchParams.set("page", newPage);
+
+      const path = newPage ? `?${serchParams.toString()}` : "?";
+
+      history.pushState({ page: newPage }, newPage, path);
+
+      App.elements.home.index.style.display = "none";
+
+      if (!newPage) {
+        App.elements.home.index.style.display = "block";
+      }
     },
   },
 
@@ -65,6 +83,10 @@ const App = {
 
       els.Logo.src =
         "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
+      els.Logo.style.cursor = "pointer";
+      els.Logo.onclick = function () {
+        App.router.go("");
+      };
 
       els.cart.src = "../assets/cart.svg";
       els.cart.onclick = function () {
