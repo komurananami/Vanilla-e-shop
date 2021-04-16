@@ -1,6 +1,7 @@
 const App = {
   init() {
     this.contollers.renderProducts();
+    this.contollers.renderHome();
   },
 
   store,
@@ -53,6 +54,7 @@ const App = {
         el.classList.add("product-item");
 
         // console.log(el);
+        els.home.productsContainer.classList.add("products-container");
         els.home.productsContainer.appendChild(el);
       }
       els.header.className = "header";
@@ -111,7 +113,6 @@ const App = {
       els.introHeading.appendChild(els.introHeadingTop);
       els.introHeading.appendChild(els.introHeadingMessage);
       els.index.appendChild(els.productsContainer);
-      els.productsContainer.classList.add("products-container");
     },
   },
 
@@ -126,7 +127,7 @@ const App = {
     footerImg: document.createElement("img"),
 
     home: {
-      main: document.createElement("div"),
+      index: document.createElement("div"),
       topWrapper: document.createElement("div"),
       topImg: document.createElement("img"),
       introWrapper: document.createElement("div"),
