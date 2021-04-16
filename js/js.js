@@ -5,6 +5,12 @@ const App = {
 
   store,
 
+  router: {
+    go(newPage) {
+      console.log("go", newPage);
+    },
+  },
+
   contollers: {
     renderProducts() {
       const els = App.elements;
@@ -67,6 +73,9 @@ const App = {
       els.topImg.src =
         "https://image.shutterstock.com/image-photo/still-life-bread-flour-spikelets-600w-1278808660.jpg";
       els.cart.src = "../assets/cart.svg";
+      els.cart.onclick = function () {
+        App.router.go("cart");
+      };
       els.introHeadingTop.innerHTML = "We design delicious";
       els.introHeadingMessage.innerHTML =
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam </br>nonummy tincidunt ut laoreet dolore magna aliquam erat volutpat.";

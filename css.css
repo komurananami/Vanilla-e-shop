@@ -15,6 +15,7 @@
 
 .headerCart {
   width: 30px;
+  cursor: pointer;
 }
 
 .topWrapper {
