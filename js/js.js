@@ -2,6 +2,7 @@ const App = {
   init() {
     this.contollers.renderProducts();
     this.contollers.renderHome();
+    this.contollers.renderFooter();
   },
 
   store,
@@ -62,8 +63,6 @@ const App = {
       els.Logo.className = "headerLogo";
       els.cart.className = "headerCart";
 
-      els.footer.className = "footer";
-
       els.Logo.src =
         "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
 
@@ -72,16 +71,10 @@ const App = {
         App.router.go("cart");
       };
 
-      els.footerImg.src =
-        "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
-
       els.app.appendChild(els.header);
       els.header.appendChild(els.nav);
       els.nav.appendChild(els.Logo);
       els.nav.appendChild(els.cart);
-
-      els.app.appendChild(els.footer);
-      els.footer.appendChild(els.footerImg);
 
       // console.log(els.productsContainer);
     },
@@ -105,7 +98,6 @@ const App = {
 
       App.elements.app.appendChild(els.index);
 
-      // els.app.appendChild(els.main);
       els.index.appendChild(els.topWrapper);
       els.topWrapper.appendChild(els.topImg);
       els.index.appendChild(els.introWrapper);
@@ -113,6 +105,17 @@ const App = {
       els.introHeading.appendChild(els.introHeadingTop);
       els.introHeading.appendChild(els.introHeadingMessage);
       els.index.appendChild(els.productsContainer);
+    },
+
+    renderFooter() {
+      const els = App.elements.footer;
+
+      els.index.className = "footer";
+      els.footerImg.src =
+        "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
+
+      App.elements.app.appendChild(els.index);
+      els.index.appendChild(els.footerImg);
     },
   },
 
@@ -123,9 +126,6 @@ const App = {
     Logo: document.createElement("img"),
     cart: document.createElement("img"),
 
-    footer: document.createElement("div"),
-    footerImg: document.createElement("img"),
-
     home: {
       index: document.createElement("div"),
       topWrapper: document.createElement("div"),
@@ -135,6 +135,11 @@ const App = {
       introHeadingTop: document.createElement("div"),
       introHeadingMessage: document.createElement("div"),
       productsContainer: document.createElement("div"),
+    },
+
+    footer: {
+      index: document.createElement("div"),
+      footerImg: document.createElement("img"),
     },
   },
 };
