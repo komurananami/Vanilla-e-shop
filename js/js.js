@@ -50,7 +50,9 @@ const App = {
         els.productsContainer.appendChild(el);
       }
       els.header.className = "header";
+      els.nav.className = "nav";
       els.Logo.className = "headerLogo";
+      els.cart.className = "headerCart";
       els.main.className = "main";
       els.topWrapper.className = "topWrapper";
       els.topImg.className = "topImg";
@@ -64,6 +66,7 @@ const App = {
         "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
       els.topImg.src =
         "https://image.shutterstock.com/image-photo/still-life-bread-flour-spikelets-600w-1278808660.jpg";
+      els.cart.src = "../assets/cart.svg";
       els.introHeadingTop.innerHTML = "We design delicious";
       els.introHeadingMessage.innerHTML =
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam </br>nonummy tincidunt ut laoreet dolore magna aliquam erat volutpat.";
@@ -71,7 +74,9 @@ const App = {
         "https://fontmeme.com/permalink/210414/1f4278e19d861152f501b2fbaa83669b.png";
 
       els.app.appendChild(els.header);
-      els.header.appendChild(els.Logo);
+      els.header.appendChild(els.nav);
+      els.nav.appendChild(els.Logo);
+      els.nav.appendChild(els.cart);
 
       els.app.appendChild(els.main);
       els.main.appendChild(els.topWrapper);
@@ -94,7 +99,9 @@ const App = {
   elements: {
     app: document.getElementById("app"),
     header: document.createElement("div"),
+    nav: document.createElement("nav"),
     Logo: document.createElement("img"),
+    cart: document.createElement("img"),
     main: document.createElement("div"),
     topWrapper: document.createElement("div"),
     topImg: document.createElement("img"),

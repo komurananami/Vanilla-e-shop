@@ -1,6 +1,20 @@
 .header {
   position: fixed;
-  padding: 30px 100px;
+  width: 100%;
+}
+
+.nav {
+  padding: 30px 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerLogo {
+  height: 60px;
+}
+
+.headerCart {
+  width: 30px;
 }
 
 .topWrapper {
