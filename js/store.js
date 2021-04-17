@@ -38,6 +38,7 @@ const store = {
         ],
       },
     ],
+    myCart: [],
   },
 
   mutations: {},

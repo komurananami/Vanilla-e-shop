@@ -1,5 +1,7 @@
 const App = {
   init() {
+    this.modal = new Modal();
+    this.contollers.renderHeader();
     this.contollers.renderProducts();
     this.contollers.renderHome();
     this.contollers.renderFooter();
@@ -10,6 +12,8 @@ const App = {
   },
 
   store,
+
+  events,
 
   router: {
     go(newPage) {
@@ -32,6 +36,50 @@ const App = {
   },
 
   contollers: {
+    createProductEl(product) {
+      const el = document.createElement("div");
+      const imgs = document.createElement("div");
+      const name = document.createElement("div");
+      const price = document.createElement("div");
+      const description = document.createElement("div");
+      const btn = document.createElement("button");
+
+      const options = {
+        el: imgs,
+        images: product.images,
+      };
+      new Carrossel(options);
+
+      document.body.style.margin = "0px";
+
+      name.className = "name";
+      price.className = "price";
+      description.className = "description";
+
+      name.innerHTML = product.name;
+      price.innerHTML = `USD ${product.price}`;
+      description.innerHTML = product.description;
+
+      btn.innerHTML = "Buy";
+
+      // wrapper function
+      btn.onclick = () => {
+        App.events.buyHandler(product);
+      };
+
+      el.appendChild(imgs);
+      el.appendChild(name);
+      el.appendChild(price);
+      el.appendChild(description);
+      el.appendChild(btn);
+
+      el.classList.add("product-item");
+
+      console.log("eeeeeeeeeee", el);
+
+      return el;
+    },
+
     renderProducts() {
       const els = App.elements;
       const store = App.store;
@@ -39,43 +87,18 @@ const App = {
 
       for (let i = 0; i < store.state.list.length; i++) {
         const product = store.state.list[i];
-        const el = document.createElement("div");
-        const imgs = document.createElement("div");
-        const name = document.createElement("div");
-        const price = document.createElement("div");
-        const description = document.createElement("div");
-        const btn = document.createElement("button");
+        const el = App.contollers.createProductEl(product);
 
-        const options = {
-          el: imgs,
-          images: product.images,
-        };
-        const carrossel = new Carrossel(options);
-
-        document.body.style.margin = "0px";
-
-        name.className = "name";
-        price.className = "price";
-        description.className = "description";
-
-        name.innerHTML = product.name;
-        price.innerHTML = `USD ${product.price}`;
-        description.innerHTML = product.description;
-
-        btn.innerHTML = "Buy";
-
-        el.appendChild(imgs);
-        el.appendChild(name);
-        el.appendChild(price);
-        el.appendChild(description);
-        el.appendChild(btn);
-
-        el.classList.add("product-item");
-
-        // console.log(el);
         els.home.productsContainer.classList.add("products-container");
         els.home.productsContainer.appendChild(el);
       }
+
+      // console.log(els.productsContainer);
+    },
+
+    renderHeader() {
+      const els = App.elements;
+
       els.header.className = "header";
       els.nav.className = "nav";
       els.Logo.className = "headerLogo";
@@ -97,8 +120,6 @@ const App = {
       els.header.appendChild(els.nav);
       els.nav.appendChild(els.Logo);
       els.nav.appendChild(els.cart);
-
-      // console.log(els.productsContainer);
     },
 
     renderHome() {
