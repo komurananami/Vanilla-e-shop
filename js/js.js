@@ -112,6 +112,7 @@ const App = {
       els.cart.src = "../assets/cart.svg";
       els.cart.onclick = function () {
         App.router.go("cart");
+        console.log("in my cart", App.store.state.myCart.list);
       };
 
       els.app.appendChild(els.header);
