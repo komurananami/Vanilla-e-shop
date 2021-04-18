@@ -41,6 +41,7 @@ const store = {
     myCart: {
       addCart(addCart) {
         console.log("addCart", addCart);
+        this.list = addCart;
       },
     },
   },
