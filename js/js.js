@@ -75,8 +75,6 @@ const App = {
 
       el.classList.add("product-item");
 
-      console.log("eeeeeeeeeee", el);
-
       return el;
     },
 

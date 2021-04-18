@@ -38,7 +38,11 @@ const store = {
         ],
       },
     ],
-    myCart: [],
+    myCart: {
+      addCart(addCart) {
+        console.log("addCart", addCart);
+      },
+    },
   },
 
   mutations: {},

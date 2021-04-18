@@ -9,6 +9,7 @@ class Modal {
     this.cancel = document.createElement("button");
 
     this.options = options;
+    console.log("modal this.options", this.options);
 
     this.createEverything();
 
