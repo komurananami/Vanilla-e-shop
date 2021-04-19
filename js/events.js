@@ -4,9 +4,9 @@ const events = {
 
     const el = document.createElement("div");
     el.innerHTML = `
-      <div>${product.name}</div>
-      <div>${product.price}</div>
-      <div>${product.stock}</div>`;
+      <div>product: ${product.name}</div>
+      <div>price: USD ${product.price}</div>
+      <div>stock: ${product.stock}</div>`;
 
     App.modal.show(el);
     App.modal.setOnConfirm(() => {
