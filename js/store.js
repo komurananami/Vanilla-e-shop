@@ -38,14 +38,30 @@ const store = {
         ],
       },
     ],
-    myCart: {
-      addCart(addCart) {
-        console.log("addCart", addCart);
-      },
-    },
+    myCart: [],
   },
 
-  mutations: {},
+  mutations: {
+    addCart(product, count) {
+      const products = store.state.list;
+      const myCart = store.state.myCart;
+
+      console.log(myCart);
+
+      const idx = myCart.findIndex((x) => x.productId === product.id);
+      console.log("idx", idx, myCart[idx]);
+      if (idx > -1) {
+        // exists
+        myCart[idx].count += count;
+      } else {
+        // create new
+        myCart.push({
+          productId: product.id,
+          count: count,
+        });
+      }
+    },
+  },
 
   actions: {},
 };

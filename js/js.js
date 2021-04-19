@@ -4,6 +4,7 @@ const App = {
     this.contollers.renderHeader();
     this.contollers.renderProducts();
     this.contollers.renderHome();
+    this.contollers.renderCart();
     this.contollers.renderFooter();
 
     const searchParams = new URLSearchParams(location.search);
@@ -28,21 +29,26 @@ const App = {
       history.pushState({ page: newPage }, newPage, path);
 
       App.elements.home.index.style.display = "none";
+      App.elements.incart.index.style.display = "none";
 
       if (!newPage) {
         App.elements.home.index.style.display = "block";
+      } else if (newPage === "cart") {
+        App.elements.incart.index.style.display = "block";
       }
     },
   },
 
   contollers: {
-    createProductEl(product) {
+    createProductEl(product, count) {
       const el = document.createElement("div");
       const imgs = document.createElement("div");
       const name = document.createElement("div");
       const price = document.createElement("div");
+      const countEl = document.createElement("div");
       const description = document.createElement("div");
       const btn = document.createElement("button");
+      console.log("product", product);
 
       const options = {
         el: imgs,
@@ -60,6 +66,10 @@ const App = {
       price.innerHTML = `USD ${product.price}`;
       description.innerHTML = product.description;
 
+      countEl.innerHTML = `Count: ${count}`;
+      countEl.setAttribute("key", "count");
+      console.log(countEl);
+
       btn.innerHTML = "Buy";
 
       // wrapper function
@@ -71,7 +81,11 @@ const App = {
       el.appendChild(name);
       el.appendChild(price);
       el.appendChild(description);
-      el.appendChild(btn);
+      if (!count) {
+        el.appendChild(btn);
+      } else {
+        el.appendChild(countEl);
+      }
 
       el.classList.add("product-item");
 
@@ -81,7 +95,7 @@ const App = {
     renderProducts() {
       const els = App.elements;
       const store = App.store;
-      console.log("document", document);
+      // console.log("document", document);
 
       for (let i = 0; i < store.state.list.length; i++) {
         const product = store.state.list[i];
@@ -112,6 +126,8 @@ const App = {
       els.cart.src = "../assets/cart.svg";
       els.cart.onclick = function () {
         App.router.go("cart");
+        App.contollers.renderCart();
+        console.log("in my cart", App.store.state.myCart.list);
       };
 
       els.app.appendChild(els.header);
@@ -158,6 +174,51 @@ const App = {
       App.elements.app.appendChild(els.index);
       els.index.appendChild(els.footerImg);
     },
+    renderCart() {
+      console.log("hello");
+
+      const els = App.elements.incart;
+      const store = App.store;
+
+      for (let i = 0; i < store.state.myCart.length; i++) {
+        const myProduct = store.state.myCart[i];
+        const product = store.state.list.find(
+          (x) => x.id === myProduct.productId
+        );
+        const el = App.contollers.createProductEl(product, myProduct.count);
+
+        els.productsContainer.classList.add("products-container");
+
+        if (!els.products[product.id]) {
+          els.productsContainer.appendChild(el);
+          els.products[product.id] = el;
+        } else {
+          const child = App.helpers.getChild(els.products[product.id], "count");
+          if (child) {
+            child.innerHTML = `Count: ${myProduct.count}`;
+          }
+        }
+      }
+
+      els.index.className = "incart";
+
+      App.elements.app.appendChild(els.index);
+      els.index.appendChild(els.productsContainer);
+    },
+  },
+
+  helpers: {
+    getChild(el, key) {
+      for (let i = 0; i < el.childNodes.length; i++) {
+        const element = el.childNodes[i];
+        console.log(element.getAttribute("key"), element);
+
+        if (element.getAttribute("key") === key) {
+          console.log("->", element);
+          return element;
+        }
+      }
+    },
   },
 
   elements: {
@@ -181,6 +242,11 @@ const App = {
     footer: {
       index: document.createElement("div"),
       footerImg: document.createElement("img"),
+    },
+    incart: {
+      index: document.createElement("div"),
+      productsContainer: document.createElement("div"),
+      products: {},
     },
   },
 };
