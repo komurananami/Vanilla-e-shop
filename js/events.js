@@ -9,9 +9,11 @@ const events = {
       <div>stock: ${product.stock}</div>`;
 
     App.modal.show(el);
+
     App.modal.setOnConfirm(() => {
       // console.log("OKKKKKKKKKK");
       App.store.mutations.addCart(product, 1);
+      App.contollers.renderSnackbar();
     });
   },
 };

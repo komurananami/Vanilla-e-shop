@@ -211,6 +211,17 @@ const App = {
       els.index.appendChild(els.myCartContainer);
       els.index.appendChild(els.productsContainer);
     },
+
+    renderSnackbar() {
+      const els = App.elements.snackbar;
+
+      els.index.className = "snackbar";
+      els.messageContainer.className = "snackbar-message";
+      els.messageContainer.innerHTML = "add my cart";
+
+      App.elements.app.appendChild(els.index);
+      els.index.appendChild(els.messageContainer);
+    },
   },
 
   helpers: {
@@ -254,6 +265,10 @@ const App = {
       productsContainer: document.createElement("div"),
       myCartContainer: document.createElement("div"),
       products: {},
+    },
+    snackbar: {
+      index: document.createElement("div"),
+      messageContainer: document.createElement("div"),
     },
   },
 };
