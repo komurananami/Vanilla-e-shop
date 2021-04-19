@@ -124,11 +124,13 @@ const App = {
       };
 
       els.cart.src = "../assets/cart.svg";
-      els.cart.onclick = function () {
+      els.cart.onclick = function (e) {
         App.router.go("cart");
         App.contollers.renderCart();
         App.contollers.renderFooter();
         console.log("in my cart", App.store.state.myCart.list);
+
+        window.scrollTo(0, 0);
       };
 
       els.app.appendChild(els.header);
