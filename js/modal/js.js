@@ -27,8 +27,8 @@ class Modal {
       this.body.appendChild(el);
     }
 
-    this.body.appendChild(this.confirm);
     this.body.appendChild(this.cancel);
+    this.body.appendChild(this.confirm);
   }
 
   show(el) {
@@ -65,6 +65,8 @@ class Modal {
     this.container.classList.add("__modal-container");
     this.backdrop.classList.add("__modal-backdrop");
     this.modal.classList.add("__modal-modal");
+    this.confirm.className = "__modal-confirm";
+    this.cancel.className = "__modal-cancel";
 
     this.closeBtn.classList.add("__modal-close-btn");
     this.closeBtn.innerHTML = "⨉";

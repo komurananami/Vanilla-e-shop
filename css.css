@@ -75,6 +75,7 @@
   background-color: #000000;
   border-radius: 20px;
   border: none;
+  cursor: pointer;
 }
 .product-item img {
   width: 700px;
