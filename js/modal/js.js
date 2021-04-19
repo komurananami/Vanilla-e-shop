@@ -20,7 +20,6 @@ class Modal {
 
   setBody(el) {
     this.body.innerHTML = "";
-    el.classList.add("__modal-ignore-click");
 
     if (typeof el === "string") {
       this.body.innerHTML = el;
@@ -38,9 +37,9 @@ class Modal {
     }
 
     this.container.style.display = "block";
-    // setTimeout(() => {
-    //   this.closeListener();
-    // }, 500);
+    setTimeout(() => {
+      this.closeListener();
+    });
   }
 
   hide() {
@@ -48,35 +47,16 @@ class Modal {
   }
 
   closeListener() {
-    document.onclick = (e) => {
-      let parent = e.target;
-      while (true) {
-        console.log("no", parent);
-        parent = parent.parentNode;
-        if (!parent) return;
-        if (parent.classList.contains("__modal-ignore-click")) {
-          break;
+    document.addEventListener(
+      "click",
+      (e) => {
+        if (!this.modal.contains(e.target)) {
+          this.hide();
         }
-      }
-      this.hide();
-      document.onclick = null;
-      //   console.log(e.target.parentNode.parentNode);
-      //   if (!e.target.classList.contains("__modal-modal")) {
-      //     console.log("click 1");
-      //     this.hide();
-      //     document.onclick = null;
-      //   } else {
-      //     let parent = e.target.parentNode;
-      //     while (parent && !parent.classList.contains("__modal-ignore-click")) {
-      //       console.log("no", parent);
-      //       parent = parent.parentNode;
-      //       break;
-      //     }
-      //     this.hide();
-      //   }
-    };
+      },
+      { once: true }
+    );
   }
-
   setOnConfirm(callback) {
     this.options.onConfirm = callback;
   }
