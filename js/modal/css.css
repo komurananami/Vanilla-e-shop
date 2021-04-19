@@ -5,7 +5,6 @@
   width: 100vw;
   height: 100vh;
   display: none;
-  text-align: center;
 }
 
 .__modal-inner-container {
@@ -29,7 +28,6 @@
 }
 
 .__modal-modal {
-  width: 30%;
   background: white;
   position: relative;
   border-radius: 5px;
@@ -46,13 +44,14 @@
   border-radius: 5px;
   color: white;
   line-height: 28px;
+  text-align: center;
 }
 .__modal-close-btn:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
 .__modal-body {
-  padding: 50px 20px;
+  padding: 80px 40px;
 }
 
 .__modal-body button {
