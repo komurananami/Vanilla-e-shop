@@ -42,8 +42,17 @@ const store = {
   },
 
   mutations: {
+    loadCart() {
+      const c = localStorage.getItem("cart");
+      console.log(c);
+      if (c) {
+        store.state.myCart = JSON.parse(c);
+        App.contollers.renderCart();
+      }
+    },
+
     addCart(product, count) {
-      const products = store.state.list;
+      // const products = store.state.list;
       const myCart = store.state.myCart;
 
       console.log(myCart);
@@ -55,11 +64,15 @@ const store = {
         myCart[idx].count += count;
       } else {
         // create new
-        myCart.push({
+        const myProduct = {
           productId: product.id,
           count: count,
-        });
+          productPrice: product.price,
+        };
+        myCart.push(myProduct);
       }
+
+      localStorage.setItem("cart", JSON.stringify(myCart));
     },
   },
 
