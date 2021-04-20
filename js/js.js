@@ -69,23 +69,27 @@ const App = {
       countEl.innerHTML = `Count: ${count}`;
       countEl.setAttribute("key", "count");
 
-      btn.innerHTML = "Buy";
-
       // wrapper function
       btn.onclick = () => {
-        App.events.buyHandler(product);
+        if (btn.innerHTML === "add cart") {
+          App.events.addCartHandler(product);
+        } else {
+          App.events.removeHandler(product);
+        }
       };
 
       el.appendChild(imgs);
       el.appendChild(name);
       el.appendChild(price);
       el.appendChild(description);
-      console.log("what", count);
+
       if (!count) {
-        el.appendChild(btn);
+        btn.innerHTML = "add cart";
       } else {
+        btn.innerHTML = "remove";
         el.appendChild(countEl);
       }
+      el.appendChild(btn);
 
       el.classList.add("product-item");
 
@@ -99,6 +103,7 @@ const App = {
       for (let i = 0; i < store.state.list.length; i++) {
         const product = store.state.list[i];
         const el = App.contollers.createProductEl(product);
+        console.log("elllllll", el);
 
         els.home.productsContainer.classList.add("products-container");
         els.home.productsContainer.appendChild(el);
