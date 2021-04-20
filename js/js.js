@@ -185,12 +185,15 @@ const App = {
 
       for (let i = 0; i < store.state.myCart.length; i++) {
         const myProduct = store.state.myCart[i];
+        console.log("mycartにある情報", myProduct);
         const product = store.state.list.find(
           (x) => x.id === myProduct.productId
         );
+        console.log("オブジェクトとってきたーー", product);
         const el = App.contollers.createProductEl(product, myProduct.count);
 
         els.productsContainer.classList.add("products-container");
+        console.log("els.products", els.products);
 
         if (!els.products[product.id]) {
           els.productsContainer.appendChild(el);
@@ -199,12 +202,18 @@ const App = {
           const child = App.helpers.getChild(els.products[product.id], "count");
           if (child) {
             child.innerHTML = `Count: ${myProduct.count}`;
+            console.log("childなに", child);
           }
         }
       }
+      console.log("my cartの中なにがある", App.store.state.myCart);
+
+      const inMyCart = App.store.state.myCart;
+      const totalAmount = App.helpers.getTotalAmount(inMyCart);
 
       els.index.className = "incart";
-      els.myCartContainer.innerHTML = "My cart";
+      els.myCartContainer.innerHTML = `My cart [ Total Amount : ${totalAmount} ] `;
+
       els.myCartContainer.className = "my-cart-container";
 
       App.elements.app.appendChild(els.index);
@@ -231,10 +240,27 @@ const App = {
         console.log(element.getAttribute("key"), element);
 
         if (element.getAttribute("key") === key) {
-          console.log("->", element);
+          console.log("elementなに", element);
+
           return element;
         }
       }
+    },
+    getTotalAmount(inMyCart) {
+      let total = 0;
+      console.log("qqqqqqqqq", inMyCart);
+      for (let i = 0; i < inMyCart.length; i++) {
+        const element = inMyCart[i];
+        const thisTotallAmount = inMyCart[i].count * inMyCart[i].productPrice;
+        console.log("element", element);
+        console.log("この商品の合計", thisTotallAmount);
+
+        // return thisTotallAmount;
+        total += thisTotallAmount;
+      }
+      console.log("total", total);
+
+      return total;
     },
   },
 

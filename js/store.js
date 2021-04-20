@@ -58,6 +58,7 @@ const store = {
         myCart.push({
           productId: product.id,
           count: count,
+          productPrice: product.price,
         });
       }
     },
