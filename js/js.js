@@ -10,6 +10,8 @@ const App = {
     const searchParams = new URLSearchParams(location.search);
     const page = searchParams.get("page"); //オブジェクトからkeyがpageのvalueをとってくる
     this.router.go(page);
+
+    this.store.mutations.loadCart();
   },
 
   store,
