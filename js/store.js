@@ -52,7 +52,7 @@ const store = {
       // 2. Render cart
       if (c) {
         store.state.myCart = JSON.parse(c);
-        App.contollers.renderCart();
+        // App.contollers.renderCart();
       }
     },
 
