@@ -50,7 +50,6 @@ const App = {
       const countEl = document.createElement("div");
       const description = document.createElement("div");
       const btn = document.createElement("button");
-      console.log("product", product);
 
       const options = {
         el: imgs,
@@ -70,7 +69,6 @@ const App = {
 
       countEl.innerHTML = `Count: ${count}`;
       countEl.setAttribute("key", "count");
-      console.log(countEl);
 
       btn.innerHTML = "Buy";
 
@@ -97,7 +95,6 @@ const App = {
     renderProducts() {
       const els = App.elements;
       const store = App.store;
-      // console.log("document", document);
 
       for (let i = 0; i < store.state.list.length; i++) {
         const product = store.state.list[i];
@@ -106,8 +103,6 @@ const App = {
         els.home.productsContainer.classList.add("products-container");
         els.home.productsContainer.appendChild(el);
       }
-
-      // console.log(els.productsContainer);
     },
 
     renderHeader() {
@@ -180,22 +175,17 @@ const App = {
       els.index.appendChild(els.footerImg);
     },
     renderCart() {
-      console.log("hello");
-
       const els = App.elements.incart;
       const store = App.store;
 
       for (let i = 0; i < store.state.myCart.length; i++) {
         const myProduct = store.state.myCart[i];
-        console.log("mycartにある情報", myProduct);
         const product = store.state.list.find(
           (x) => x.id === myProduct.productId
         );
-        console.log("オブジェクトとってきたーー", product);
         const el = App.contollers.createProductEl(product, myProduct.count);
 
         els.productsContainer.classList.add("products-container");
-        console.log("els.products", els.products);
 
         if (!els.products[product.id]) {
           els.productsContainer.appendChild(el);
@@ -204,11 +194,9 @@ const App = {
           const child = App.helpers.getChild(els.products[product.id], "count");
           if (child) {
             child.innerHTML = `Count: ${myProduct.count}`;
-            console.log("childなに", child);
           }
         }
       }
-      console.log("my cartの中なにがある", App.store.state.myCart);
 
       const inMyCart = App.store.state.myCart;
       const totalAmount = App.helpers.getTotalAmount(inMyCart);
@@ -239,28 +227,21 @@ const App = {
     getChild(el, key) {
       for (let i = 0; i < el.childNodes.length; i++) {
         const element = el.childNodes[i];
-        console.log(element.getAttribute("key"), element);
+        // console.log(element.getAttribute("key"), element);
 
         if (element.getAttribute("key") === key) {
-          console.log("elementなに", element);
-
           return element;
         }
       }
     },
     getTotalAmount(inMyCart) {
       let total = 0;
-      console.log("qqqqqqqqq", inMyCart);
       for (let i = 0; i < inMyCart.length; i++) {
         const element = inMyCart[i];
         const thisTotallAmount = inMyCart[i].count * inMyCart[i].productPrice;
-        console.log("element", element);
-        console.log("この商品の合計", thisTotallAmount);
 
-        // return thisTotallAmount;
         total += thisTotallAmount;
       }
-      console.log("total", total);
 
       return total;
     },

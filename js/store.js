@@ -45,7 +45,7 @@ const store = {
     loadCart() {
       // Load cart from localStorage.
       const c = localStorage.getItem("cart");
-      console.log(c);
+      // console.log(c);
 
       // if exists
       // 1. Set state.myCart
@@ -60,10 +60,8 @@ const store = {
       // const products = store.state.list;
       const myCart = store.state.myCart;
 
-      console.log(myCart);
-
       const idx = myCart.findIndex((x) => x.productId === product.id);
-      console.log("idx", idx, myCart[idx]);
+      // console.log("idx", idx, myCart[idx]);
       if (idx > -1) {
         // exists
         myCart[idx].count += count;
