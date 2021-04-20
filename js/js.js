@@ -87,6 +87,9 @@ const App = {
         btn.innerHTML = "add cart";
       } else {
         btn.innerHTML = "remove";
+        btn.style.color = "black";
+        btn.style.background = "white";
+        btn.style.border = "2px solid black";
         el.appendChild(countEl);
       }
       el.appendChild(btn);
