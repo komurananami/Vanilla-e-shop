@@ -77,6 +77,31 @@ const store = {
 
       localStorage.setItem("cart", JSON.stringify(myCart));
     },
+
+    removeCart(product, count) {
+      console.log("you can remove", product, count);
+
+      const myCart = store.state.myCart;
+
+      for (let i = 0; i < myCart.length; i++) {
+        const id = myCart[i].productId;
+        if (id === product.id) {
+          if (myCart[i].count > 1) {
+            myCart[i].count -= count;
+          } else {
+            const val = myCart[i];
+            var index = myCart.indexOf(val);
+            myCart.splice(index, 1);
+
+            console.log("elseeeeeee", myCart);
+          }
+          App.contollers.renderCart();
+          App.contollers.renderFooter();
+        }
+      }
+
+      localStorage.setItem("cart", JSON.stringify(myCart));
+    },
   },
 
   actions: {},
