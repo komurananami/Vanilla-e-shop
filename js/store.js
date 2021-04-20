@@ -94,6 +94,8 @@ const store = {
             myCart.splice(index, 1);
 
             console.log("elseeeeeee", myCart);
+
+            App.elements.incart.products[product.id].remove();
           }
           App.contollers.renderCart();
           App.contollers.renderFooter();
