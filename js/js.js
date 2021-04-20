@@ -1,6 +1,7 @@
 const App = {
   init() {
     this.modal = new Modal();
+    this.store.mutations.loadCart();
     this.contollers.renderHeader();
     this.contollers.renderProducts();
     this.contollers.renderHome();
@@ -10,8 +11,6 @@ const App = {
     const searchParams = new URLSearchParams(location.search);
     const page = searchParams.get("page"); //オブジェクトからkeyがpageのvalueをとってくる
     this.router.go(page);
-
-    this.store.mutations.loadCart();
   },
 
   store,
@@ -81,6 +80,7 @@ const App = {
       el.appendChild(name);
       el.appendChild(price);
       el.appendChild(description);
+      console.log("what", count);
       if (!count) {
         el.appendChild(btn);
       } else {
