@@ -43,8 +43,13 @@ const store = {
 
   mutations: {
     loadCart() {
+      // Load cart from localStorage.
       const c = localStorage.getItem("cart");
       console.log(c);
+
+      // if exists
+      // 1. Set state.myCart
+      // 2. Render cart
       if (c) {
         store.state.myCart = JSON.parse(c);
         App.contollers.renderCart();
