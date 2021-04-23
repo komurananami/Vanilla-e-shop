@@ -54,6 +54,18 @@
   padding: 80px 40px;
 }
 
+/* .__modal-count-btn button {
+  border-radius: 0px;
+  padding: 5px;
+  margin: 5px;
+} */
+
+/* .__modal-inner-body button {
+  border-radius: 0px;
+  margin: 5px;
+  padding: 5px;
+} */
+
 .__modal-body button {
   padding: 8px 20px;
   margin: 20px 10px 5px 10px;

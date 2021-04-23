@@ -18,25 +18,67 @@ class Modal {
     }
   }
 
-  setBody(el) {
+  // setBody(el, product, myCart) {
+  setBody(el, product, setCount) {
+    this.countBtnContainer = document.createElement("div");
+    const minusBtn = document.createElement("button");
+    const plusBtn = document.createElement("button");
+
     this.body.innerHTML = "";
+    console.log("product, setCount取れてる", product, setCount);
 
     if (typeof el === "string") {
       this.body.innerHTML = el;
     } else {
       this.body.appendChild(el);
+      // minusBtn.innerHTML = "-";
+      // minusBtn.style.borderRadius = "0px";
+      // minusBtn.style.margin = "5px";
+      // minusBtn.style.padding = "4px 7px";
+      // minusBtn.onclick = this.countMinus;
+      // minusBtn.onclick = function () {
+      //   console.log("---------");
+      // };
+      // minusBtn.onclick = () => {
+      //   console.log("minus", product, setCount);
+      //   if (setCount > 1) {
+      //     setCount -= 1;
+      //     console.log("-1しました", setCount);
+      //     App.events.addCartHandler(product, setCount);
+      //   } else {
+      //     console.log("countが１以下だよ");
+      //   }
+      // };
+
+      // plusBtn.innerHTML = "+";
+      // plusBtn.style.borderRadius = "0px";
+      // plusBtn.style.margin = "5px";
+      // plusBtn.style.padding = "4px 5px";
+      // plusBtn.onclick = function () {
+      //   console.log("++++++++++");
+      // };
+
+      this.body.appendChild(this.countBtnContainer);
+      // this.countBtnContainer.appendChild(minusBtn);
+      // this.countBtnContainer.appendChild(plusBtn);
+
+      // el.className = "__modal-inner-body";
     }
 
     this.body.appendChild(this.cancel);
     this.body.appendChild(this.confirm);
   }
 
-  show(el) {
+  // show(el, product, myCart) {
+  show(el, product, setCount) {
     if (el) {
-      this.setBody(el);
+      // this.setBody(el, product, myCart);
+      this.setBody(el, product, setCount);
     }
 
     this.container.style.display = "block";
+    console.log("ここのblockが効いてない", this.container);
+
     setTimeout(() => {
       this.closeListener();
     });
@@ -99,4 +141,8 @@ class Modal {
     this.container.appendChild(el);
     document.body.appendChild(this.container);
   }
+
+  // countMinus() {
+  //   console.log("hello");
+  // }
 }

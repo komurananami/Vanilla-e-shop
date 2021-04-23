@@ -87,6 +87,7 @@ const App = {
         btn.innerHTML = "add cart";
       } else {
         btn.innerHTML = "remove";
+        btn.className = "btn-remove";
         btn.style.color = "black";
         btn.style.background = "white";
         btn.style.border = "2px solid black";
@@ -106,7 +107,7 @@ const App = {
       for (let i = 0; i < store.state.list.length; i++) {
         const product = store.state.list[i];
         const el = App.contollers.createProductEl(product);
-        console.log("elllllll", el);
+        // console.log("elllllll", el);
 
         els.home.productsContainer.classList.add("products-container");
         els.home.productsContainer.appendChild(el);
