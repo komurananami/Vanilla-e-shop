@@ -9,7 +9,6 @@ class Modal {
     this.cancel = document.createElement("button");
 
     this.options = options;
-    console.log("modal this.options", this.options);
 
     this.createEverything();
 
@@ -18,14 +17,12 @@ class Modal {
     }
   }
 
-  // setBody(el, product, myCart) {
   setBody(el, product, setCount) {
     this.countBtnContainer = document.createElement("div");
     const minusBtn = document.createElement("button");
     const plusBtn = document.createElement("button");
 
     this.body.innerHTML = "";
-    console.log("product, setCount取れてる", product, setCount);
 
     if (typeof el === "string") {
       this.body.innerHTML = el;
@@ -38,15 +35,12 @@ class Modal {
     this.body.appendChild(this.confirm);
   }
 
-  // show(el, product, myCart) {
   show(el, product, setCount) {
     if (el) {
-      // this.setBody(el, product, myCart);
       this.setBody(el, product, setCount);
     }
 
     this.container.style.display = "block";
-    console.log("ここのblockが効いてない", this.container);
 
     setTimeout(() => {
       this.closeListener();
@@ -110,8 +104,4 @@ class Modal {
     this.container.appendChild(el);
     document.body.appendChild(this.container);
   }
-
-  // countMinus() {
-  //   console.log("hello");
-  // }
 }

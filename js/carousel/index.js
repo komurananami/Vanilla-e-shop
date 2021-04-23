@@ -84,13 +84,11 @@ class Carrossel {
   }
 
   showImage() {
-    // 1. Esconde todas as imagens
     for (let i = 0; i < this._els.length; i++) {
       const img = this._els[i];
       img.style.display = "none";
     }
 
-    // 2. Mostra a imagem correta
     this._els[this._current].style.display = "block";
   }
 }

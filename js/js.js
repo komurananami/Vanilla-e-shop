@@ -9,10 +9,8 @@ const App = {
     this.contollers.renderFooter();
 
     const searchParams = new URLSearchParams(location.search);
-    const page = searchParams.get("page"); //オブジェクトからkeyがpageのvalueをとってくる
+    const page = searchParams.get("page");
     this.router.go(page);
-
-    //
   },
 
   store,
@@ -21,8 +19,6 @@ const App = {
 
   router: {
     go(newPage) {
-      console.log("go", newPage);
-
       const serchParams = new URLSearchParams(location.search);
 
       serchParams.set("page", newPage);
@@ -71,7 +67,6 @@ const App = {
       countEl.innerHTML = `Count: ${count}`;
       countEl.setAttribute("key", "count");
 
-      // wrapper function
       btn.onclick = () => {
         if (btn.innerHTML === "add cart") {
           App.events.addCartHandler(product);
@@ -109,7 +104,6 @@ const App = {
       for (let i = 0; i < store.state.list.length; i++) {
         const product = store.state.list[i];
         const el = App.contollers.createProductEl(product);
-        // console.log("elllllll", el);
 
         els.home.productsContainer.classList.add("products-container");
         els.home.productsContainer.appendChild(el);
@@ -136,7 +130,6 @@ const App = {
         App.router.go("cart");
         App.contollers.renderCart();
         App.contollers.renderFooter();
-        console.log("in my cart", App.store.state.myCart.list);
 
         window.scrollTo(0, 0);
       };
@@ -189,6 +182,12 @@ const App = {
       const els = App.elements.incart;
       const store = App.store;
 
+      if (!store.state.myCart.length) {
+        App.router.go("");
+
+        return;
+      }
+
       for (let i = 0; i < store.state.myCart.length; i++) {
         const myProduct = store.state.myCart[i];
         const product = store.state.list.find(
@@ -217,9 +216,26 @@ const App = {
 
       els.myCartContainer.className = "my-cart-container";
 
+      els.buyCartContainer.className = "buy-cart-container";
+
+      els.buyCart.classList = "buy-cart";
+      els.buyCart.innerHTML = "Confirm purchase";
+      els.buyCart.onclick = function () {
+        const myCart = [...store.state.myCart];
+        for (let i = 0; i < myCart.length; i++) {
+          const myProduct = myCart[i];
+          const product = App.store.state.list.find(
+            (x) => x.id === myProduct.productId
+          );
+          App.store.mutations.removeCart(product, myProduct.count);
+        }
+      };
+
       App.elements.app.appendChild(els.index);
       els.index.appendChild(els.myCartContainer);
       els.index.appendChild(els.productsContainer);
+      els.index.appendChild(els.buyCartContainer);
+      els.buyCartContainer.appendChild(els.buyCart);
     },
 
     renderSnackbar() {
@@ -238,7 +254,6 @@ const App = {
     getChild(el, key) {
       for (let i = 0; i < el.childNodes.length; i++) {
         const element = el.childNodes[i];
-        // console.log(element.getAttribute("key"), element);
 
         if (element.getAttribute("key") === key) {
           return element;
@@ -261,15 +276,11 @@ const App = {
   api: async (type, url, body) => {
     const options = {
       headers: {
-        Authorization: "Bearer 9YQT3L53GZ7GUgMK998v6Ql7eHCa_5LETIxDMn3YE8s",
+        Authorization: "Bearer ",
       },
     };
 
-    const a = await axios.get(
-      `https://www.spearly.com/api/v1/content_types/ct-v5TG4Ys1dEhIgxbU38r7/contents`,
-      options
-    );
-    console.log(a);
+    const a = await axios.get(``, options);
 
     // // XMLHttpRequestオブジェクトの作成
     // var request = new XMLHttpRequest();
@@ -277,13 +288,10 @@ const App = {
     // // URLを開く
     // request.open(
     //   type,
-    //   `https://www.spearly.com/api/v1/content_types/ct-P7zpXQTh9MFilcIjSunO/${url}`
+    //   ``
     // );
 
-    // request.setRequestHeader(
-    //   "Authorization",
-    //   ""
-    // );
+    // request.setRequestHeader("Authorization", "");
 
     // // レスポンスが返ってきた時の処理を記述
     // request.onload = function () {
@@ -321,6 +329,8 @@ const App = {
       index: document.createElement("div"),
       productsContainer: document.createElement("div"),
       myCartContainer: document.createElement("div"),
+      buyCartContainer: document.createElement("div"),
+      buyCart: document.createElement("button"),
       products: {},
     },
     snackbar: {
