@@ -31,38 +31,7 @@ class Modal {
       this.body.innerHTML = el;
     } else {
       this.body.appendChild(el);
-      // minusBtn.innerHTML = "-";
-      // minusBtn.style.borderRadius = "0px";
-      // minusBtn.style.margin = "5px";
-      // minusBtn.style.padding = "4px 7px";
-      // minusBtn.onclick = this.countMinus;
-      // minusBtn.onclick = function () {
-      //   console.log("---------");
-      // };
-      // minusBtn.onclick = () => {
-      //   console.log("minus", product, setCount);
-      //   if (setCount > 1) {
-      //     setCount -= 1;
-      //     console.log("-1しました", setCount);
-      //     App.events.addCartHandler(product, setCount);
-      //   } else {
-      //     console.log("countが１以下だよ");
-      //   }
-      // };
-
-      // plusBtn.innerHTML = "+";
-      // plusBtn.style.borderRadius = "0px";
-      // plusBtn.style.margin = "5px";
-      // plusBtn.style.padding = "4px 5px";
-      // plusBtn.onclick = function () {
-      //   console.log("++++++++++");
-      // };
-
       this.body.appendChild(this.countBtnContainer);
-      // this.countBtnContainer.appendChild(minusBtn);
-      // this.countBtnContainer.appendChild(plusBtn);
-
-      // el.className = "__modal-inner-body";
     }
 
     this.body.appendChild(this.cancel);

@@ -108,5 +108,5 @@ const store = {
 
   actions: {},
 };
-
+pattern;
 // non persistant memory

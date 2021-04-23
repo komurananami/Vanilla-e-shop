@@ -11,6 +11,8 @@ const App = {
     const searchParams = new URLSearchParams(location.search);
     const page = searchParams.get("page"); //オブジェクトからkeyがpageのvalueをとってくる
     this.router.go(page);
+
+    //
   },
 
   store,
@@ -254,6 +256,43 @@ const App = {
 
       return total;
     },
+  },
+
+  api: async (type, url, body) => {
+    const options = {
+      headers: {
+        Authorization: "Bearer 9YQT3L53GZ7GUgMK998v6Ql7eHCa_5LETIxDMn3YE8s",
+      },
+    };
+
+    const a = await axios.get(
+      `https://www.spearly.com/api/v1/content_types/ct-v5TG4Ys1dEhIgxbU38r7/contents`,
+      options
+    );
+    console.log(a);
+
+    // // XMLHttpRequestオブジェクトの作成
+    // var request = new XMLHttpRequest();
+
+    // // URLを開く
+    // request.open(
+    //   type,
+    //   `https://www.spearly.com/api/v1/content_types/ct-P7zpXQTh9MFilcIjSunO/${url}`
+    // );
+
+    // request.setRequestHeader(
+    //   "Authorization",
+    //   ""
+    // );
+
+    // // レスポンスが返ってきた時の処理を記述
+    // request.onload = function () {
+    //   // レスポンスが返ってきた時の処理
+    //   console.log(request);
+    // };
+
+    // // リクエストをURLに送信
+    // request.send();
   },
 
   elements: {
