@@ -69,6 +69,7 @@
 
 .incart {
   padding: 150px 0;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .my-cart-container {
@@ -112,9 +113,20 @@
   border: none;
   cursor: pointer;
 }
+
 .product-item img {
   width: 700px;
   height: 200px;
+}
+
+.buy-cart-container {
+  width: 100%;
+  text-align: center;
+}
+.buy-cart {
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .footer {

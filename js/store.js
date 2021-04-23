@@ -43,30 +43,19 @@ const store = {
 
   mutations: {
     loadCart() {
-      // Load cart from localStorage.
       const c = localStorage.getItem("cart");
-      // console.log(c);
-
-      // if exists
-      // 1. Set state.myCart
-      // 2. Render cart
       if (c) {
         store.state.myCart = JSON.parse(c);
-        // App.contollers.renderCart();
       }
     },
 
     addCart(product, count) {
-      // const products = store.state.list;
       const myCart = store.state.myCart;
 
       const idx = myCart.findIndex((x) => x.productId === product.id);
-      // console.log("idx", idx, myCart[idx]);
       if (idx > -1) {
-        // exists
         myCart[idx].count += count;
       } else {
-        // create new
         const myProduct = {
           productId: product.id,
           count: count,
@@ -79,34 +68,30 @@ const store = {
     },
 
     removeCart(product, count) {
-      console.log("you can remove", product, count);
-
-      const myCart = store.state.myCart;
+      const myCart = [...store.state.myCart];
 
       for (let i = 0; i < myCart.length; i++) {
         const id = myCart[i].productId;
         if (id === product.id) {
-          if (myCart[i].count > 1) {
-            myCart[i].count -= count;
-          } else {
-            const val = myCart[i];
-            var index = myCart.indexOf(val);
-            myCart.splice(index, 1);
+          const diff = myCart[i].count - count;
+          myCart[i].count = diff;
 
-            console.log("elseeeeeee", myCart);
-
+          if (diff === 0) {
+            myCart.splice(i, 1);
             App.elements.incart.products[product.id].remove();
           }
+
           App.contollers.renderCart();
           App.contollers.renderFooter();
+
+          store.state.myCart = myCart;
+          localStorage.setItem("cart", JSON.stringify(myCart));
+          break;
         }
       }
-
-      localStorage.setItem("cart", JSON.stringify(myCart));
     },
   },
 
   actions: {},
 };
-
 // non persistant memory

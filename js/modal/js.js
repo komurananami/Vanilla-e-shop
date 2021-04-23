@@ -9,7 +9,6 @@ class Modal {
     this.cancel = document.createElement("button");
 
     this.options = options;
-    console.log("modal this.options", this.options);
 
     this.createEverything();
 
@@ -18,25 +17,31 @@ class Modal {
     }
   }
 
-  setBody(el) {
+  setBody(el, product, setCount) {
+    this.countBtnContainer = document.createElement("div");
+    const minusBtn = document.createElement("button");
+    const plusBtn = document.createElement("button");
+
     this.body.innerHTML = "";
 
     if (typeof el === "string") {
       this.body.innerHTML = el;
     } else {
       this.body.appendChild(el);
+      this.body.appendChild(this.countBtnContainer);
     }
 
     this.body.appendChild(this.cancel);
     this.body.appendChild(this.confirm);
   }
 
-  show(el) {
+  show(el, product, setCount) {
     if (el) {
-      this.setBody(el);
+      this.setBody(el, product, setCount);
     }
 
     this.container.style.display = "block";
+
     setTimeout(() => {
       this.closeListener();
     });
