@@ -132,4 +132,43 @@ const events = {
       App.contollers.renderSnackbar();
     });
   },
+  confirmPurchaseHandler(myCart) {
+    const el = document.createElement("div");
+
+    const title = document.createElement("div");
+    title.innerHTML = "purchase all products?";
+
+    el.appendChild(title);
+
+    App.modal.show(el);
+
+    App.modal.setOnConfirm(() => {
+      for (let i = 0; i < myCart.length; i++) {
+        const myProduct = myCart[i];
+        const product = App.store.state.list.find(
+          (x) => x.id === myProduct.productId
+        );
+
+        App.store.mutations.removeCart(product, myProduct.count);
+      }
+      el.innerHTML = "";
+      App.events.startShoping();
+    });
+  },
+  startShoping() {
+    console.log("start shoping");
+    const el = document.createElement("div");
+
+    const message = document.createElement("div");
+    message.innerHTML = "Thank you for your purchase!</br>Let's keep shopping.";
+
+    el.appendChild(message);
+
+    App.modal.show(el);
+
+    App.modal.setOnConfirm(() => {
+      App.router.go("");
+      scrollTo(0, 0);
+    });
+  },
 };
