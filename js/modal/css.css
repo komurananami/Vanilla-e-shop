@@ -92,3 +92,7 @@
 .__modal-confirm:hover {
   background-color: rgba(0, 0, 0, 1);
 }
+
+.__modal-confirm:disabled {
+  background-color: rgba(0, 0, 0, 0.1);
+}
