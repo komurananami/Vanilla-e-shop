@@ -193,7 +193,6 @@ const App = {
         const product = store.state.list.find(
           (x) => x.id === myProduct.productId
         );
-        console.log("product", product);
         const el = App.contollers.createProductEl(product, myProduct.count);
 
         els.productsContainer.classList.add("products-container");
