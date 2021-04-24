@@ -156,7 +156,6 @@ const events = {
     });
   },
   startShoping() {
-    console.log("start shoping");
     const el = document.createElement("div");
 
     const message = document.createElement("div");
