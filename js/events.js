@@ -23,17 +23,37 @@ const events = {
       if (setCount > 1) {
         setCount--;
         count.innerHTML = `count: ${setCount}`;
+        errorMessage.innerHTML = "";
       }
     };
+
+    const productInMyCart = store.state.myCart.find(
+      (x) => x.productId === product.id
+    );
+
+    let countInMyCart = 0;
+    if (productInMyCart) {
+      countInMyCart = productInMyCart.count;
+    }
 
     const btnPlus = document.createElement("button");
     btnPlus.innerHTML = "+";
     btnPlus.onclick = () => {
-      if (setCount < product.stock) {
+      if (setCount + countInMyCart < product.stock) {
         setCount++;
         count.innerHTML = `count: ${setCount}`;
+      } else if (setCount + countInMyCart == product.stock) {
+        setCount++;
+        count.innerHTML = `count: ${setCount}`;
+        errorMessage.innerHTML = "out of stock";
       }
     };
+
+    const errorMessage = document.createElement("div");
+    errorMessage.className = "error-message";
+    if (setCount + countInMyCart > product.stock) {
+      errorMessage.innerHTML = "out of stock";
+    }
 
     el.appendChild(title);
     el.appendChild(hr);
@@ -42,6 +62,7 @@ const events = {
     el.appendChild(count);
     el.appendChild(btnMinus);
     el.appendChild(btnPlus);
+    el.appendChild(errorMessage);
 
     App.modal.show(el, product, setCount);
 
@@ -83,8 +104,15 @@ const events = {
       if (setCount < product.stock) {
         setCount++;
         count.innerHTML = `count: ${setCount}`;
+        // el.errorMessage.innerHTML = "";
+        // console.log("setCount < product.stock", setCount);
       }
+      //  else {
+      //   el.errorMessage.innerHTML = "out of stock";
+      // }
     };
+
+    // const errorMessage = document.createElement("div");
 
     el.appendChild(title);
     el.appendChild(hr);
@@ -93,6 +121,7 @@ const events = {
     el.appendChild(count);
     el.appendChild(btnMinus);
     el.appendChild(btnPlus);
+    // el.appendChild(errorMessage);
 
     App.modal.show(el, product, setCount);
 
