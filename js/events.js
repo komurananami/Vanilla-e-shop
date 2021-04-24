@@ -24,6 +24,8 @@ const events = {
         setCount--;
         count.innerHTML = `count: ${setCount}`;
         errorMessage.innerHTML = "";
+
+        App.modal.setDisabled(false);
       }
     };
 
@@ -38,14 +40,19 @@ const events = {
 
     const btnPlus = document.createElement("button");
     btnPlus.innerHTML = "+";
+
     btnPlus.onclick = () => {
       if (setCount + countInMyCart < product.stock) {
         setCount++;
         count.innerHTML = `count: ${setCount}`;
+
+        App.modal.setDisabled(false);
       } else if (setCount + countInMyCart == product.stock) {
         setCount++;
         count.innerHTML = `count: ${setCount}`;
         errorMessage.innerHTML = "out of stock";
+
+        App.modal.setDisabled(true);
       }
     };
 
@@ -53,6 +60,7 @@ const events = {
     errorMessage.className = "error-message";
     if (setCount + countInMyCart > product.stock) {
       errorMessage.innerHTML = "out of stock";
+      App.modal.setDisabled(true);
     }
 
     el.appendChild(title);
@@ -67,8 +75,10 @@ const events = {
     App.modal.show(el, product, setCount);
 
     App.modal.setOnConfirm(() => {
-      App.store.mutations.addCart(product, setCount);
-      App.contollers.renderSnackbar();
+      if (setCount + countInMyCart <= product.stock) {
+        App.store.mutations.addCart(product, setCount);
+        App.contollers.renderSnackbar();
+      }
     });
   },
   removeHandler(product, setCount = 1) {
@@ -104,15 +114,8 @@ const events = {
       if (setCount < product.stock) {
         setCount++;
         count.innerHTML = `count: ${setCount}`;
-        // el.errorMessage.innerHTML = "";
-        // console.log("setCount < product.stock", setCount);
       }
-      //  else {
-      //   el.errorMessage.innerHTML = "out of stock";
-      // }
     };
-
-    // const errorMessage = document.createElement("div");
 
     el.appendChild(title);
     el.appendChild(hr);
@@ -121,7 +124,6 @@ const events = {
     el.appendChild(count);
     el.appendChild(btnMinus);
     el.appendChild(btnPlus);
-    // el.appendChild(errorMessage);
 
     App.modal.show(el, product, setCount);
 

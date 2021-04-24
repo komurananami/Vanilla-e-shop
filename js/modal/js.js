@@ -62,8 +62,13 @@ class Modal {
       { once: true }
     );
   }
+
   setOnConfirm(callback) {
     this.options.onConfirm = callback;
+  }
+
+  setDisabled(value) {
+    this.confirm.disabled = value;
   }
 
   createEverything() {
@@ -81,7 +86,10 @@ class Modal {
 
     this.confirm.innerHTML = "Confirm";
     this.confirm.onclick = () => {
-      this.hide();
+      if (!this.confirm.disabled) {
+        this.hide();
+      }
+
       if (this.options.onConfirm) {
         this.options.onConfirm();
       }
