@@ -129,6 +129,11 @@
   cursor: pointer;
 }
 
+.error-message {
+  color: red;
+  height: 20px;
+}
+
 .footer {
   height: 250px;
   width: 100%;
