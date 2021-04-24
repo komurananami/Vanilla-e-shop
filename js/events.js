@@ -111,9 +111,15 @@ const events = {
     const btnPlus = document.createElement("button");
     btnPlus.innerHTML = "+";
     btnPlus.onclick = () => {
-      if (setCount < product.stock) {
-        setCount++;
-        count.innerHTML = `count: ${setCount}`;
+      for (let i = 0; i < myCart.length; i++) {
+        const myCartProduct = myCart[i];
+
+        if (setCount < myCartProduct.count) {
+          setCount++;
+          count.innerHTML = `count: ${setCount}`;
+
+          break;
+        }
       }
     };
 
