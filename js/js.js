@@ -223,13 +223,8 @@ const App = {
       els.confirmPurchase.innerHTML = "Confirm purchase";
       els.confirmPurchase.onclick = function () {
         const myCart = [...store.state.myCart];
-        for (let i = 0; i < myCart.length; i++) {
-          const myProduct = myCart[i];
-          const product = App.store.state.list.find(
-            (x) => x.id === myProduct.productId
-          );
-          App.store.mutations.removeCart(product, myProduct.count);
-        }
+
+        App.events.confirmPurchaseHandler(myCart);
       };
 
       App.elements.app.appendChild(els.index);
