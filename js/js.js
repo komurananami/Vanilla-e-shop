@@ -193,6 +193,7 @@ const App = {
         const product = store.state.list.find(
           (x) => x.id === myProduct.productId
         );
+        console.log("product", product);
         const el = App.contollers.createProductEl(product, myProduct.count);
 
         els.productsContainer.classList.add("products-container");
@@ -216,11 +217,11 @@ const App = {
 
       els.myCartContainer.className = "my-cart-container";
 
-      els.buyCartContainer.className = "buy-cart-container";
+      els.confirmPurchaseContainer.className = "buy-cart-container";
 
-      els.buyCart.classList = "buy-cart";
-      els.buyCart.innerHTML = "Confirm purchase";
-      els.buyCart.onclick = function () {
+      els.confirmPurchase.classList = "buy-cart";
+      els.confirmPurchase.innerHTML = "Confirm purchase";
+      els.confirmPurchase.onclick = function () {
         const myCart = [...store.state.myCart];
         for (let i = 0; i < myCart.length; i++) {
           const myProduct = myCart[i];
@@ -234,8 +235,8 @@ const App = {
       App.elements.app.appendChild(els.index);
       els.index.appendChild(els.myCartContainer);
       els.index.appendChild(els.productsContainer);
-      els.index.appendChild(els.buyCartContainer);
-      els.buyCartContainer.appendChild(els.buyCart);
+      els.index.appendChild(els.confirmPurchaseContainer);
+      els.confirmPurchaseContainer.appendChild(els.confirmPurchase);
     },
 
     renderSnackbar() {
@@ -329,8 +330,8 @@ const App = {
       index: document.createElement("div"),
       productsContainer: document.createElement("div"),
       myCartContainer: document.createElement("div"),
-      buyCartContainer: document.createElement("div"),
-      buyCart: document.createElement("button"),
+      confirmPurchaseContainer: document.createElement("div"),
+      confirmPurchase: document.createElement("button"),
       products: {},
     },
     snackbar: {
