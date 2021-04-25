@@ -80,7 +80,6 @@ const store = {
             myCart.splice(i, 1);
             App.elements.incart.products[product.id].remove();
           }
-
           App.contollers.renderCart();
           App.contollers.renderFooter();
 
