@@ -135,7 +135,7 @@ const events = {
 
     App.modal.setOnConfirm(() => {
       App.store.mutations.removeCart(product, setCount);
-      App.contollers.renderSnackbar();
+      App.contollers.renderSnackbar("remove");
     });
   },
   confirmPurchaseHandler(myCart) {

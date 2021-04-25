@@ -233,12 +233,16 @@ const App = {
       els.confirmPurchaseContainer.appendChild(els.confirmPurchase);
     },
 
-    renderSnackbar() {
+    renderSnackbar(type) {
       const els = App.elements.snackbar;
 
       els.index.className = "snackbar";
       els.messageContainer.className = "snackbar-message";
-      els.messageContainer.innerHTML = "add my cart";
+      if (type === "remove") {
+        els.messageContainer.innerHTML = "remove cart";
+      } else {
+        els.messageContainer.innerHTML = "add my cart";
+      }
 
       App.elements.app.appendChild(els.index);
       els.index.appendChild(els.messageContainer);
