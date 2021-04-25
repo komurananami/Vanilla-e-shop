@@ -182,6 +182,8 @@ const App = {
       const els = App.elements.incart;
       const store = App.store;
 
+      els.confirmPurchaseContainer.innerHTML = "";
+
       if (!store.state.myCart.length) {
         App.router.go("");
 
@@ -230,7 +232,11 @@ const App = {
       els.index.appendChild(els.myCartContainer);
       els.index.appendChild(els.productsContainer);
       els.index.appendChild(els.confirmPurchaseContainer);
-      els.confirmPurchaseContainer.appendChild(els.confirmPurchase);
+      if (store.state.myCart.length === 1) {
+        return;
+      } else {
+        els.confirmPurchaseContainer.appendChild(els.confirmPurchase);
+      }
     },
 
     renderSnackbar(type) {
