@@ -159,6 +159,9 @@ const events = {
       }
       el.innerHTML = "";
       App.events.startShoping();
+
+      App.elements.incart.productsContainer.innerHTML = "";
+      App.elements.incart.products = {};
     });
   },
   startShoping() {

@@ -182,8 +182,6 @@ const App = {
       const els = App.elements.incart;
       const store = App.store;
 
-      els.confirmPurchaseContainer.innerHTML = "";
-
       if (!store.state.myCart.length) {
         App.router.go("");
 
@@ -232,11 +230,8 @@ const App = {
       els.index.appendChild(els.myCartContainer);
       els.index.appendChild(els.productsContainer);
       els.index.appendChild(els.confirmPurchaseContainer);
-      if (store.state.myCart.length === 1) {
-        return;
-      } else {
-        els.confirmPurchaseContainer.appendChild(els.confirmPurchase);
-      }
+
+      els.confirmPurchaseContainer.appendChild(els.confirmPurchase);
     },
 
     renderSnackbar(type) {
@@ -286,26 +281,6 @@ const App = {
     };
 
     const a = await axios.get(``, options);
-
-    // // XMLHttpRequestオブジェクトの作成
-    // var request = new XMLHttpRequest();
-
-    // // URLを開く
-    // request.open(
-    //   type,
-    //   ``
-    // );
-
-    // request.setRequestHeader("Authorization", "");
-
-    // // レスポンスが返ってきた時の処理を記述
-    // request.onload = function () {
-    //   // レスポンスが返ってきた時の処理
-    //   console.log(request);
-    // };
-
-    // // リクエストをURLに送信
-    // request.send();
   },
 
   elements: {
